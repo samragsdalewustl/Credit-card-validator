@@ -1,0 +1,30 @@
+<html>
+<head>
+<script type="text/javascript" src="CreditCardValidator.js"></script>
+
+<script type="text/javascript">
+	function credit_card_update(input){
+		//run checksum algo, change color of CreditCard class accordingly
+		if(luhnCheck(input)){
+			document.getElementsByClassName("CreditCard")[0].style.backgroundColor = "green";
+		}
+		else{
+			document.getElementsByClassName("CreditCard")[0].style.backgroundColor = "red";
+		}
+
+		//display card type
+		document.getElementById("cardType").innerHTML = getCardType(input);
+	}
+</script>
+</head>
+<body>
+<h1>Test Credit Card Validator</h1>
+<input type="text" class="CreditCard" onKeyUp="credit_card_update(this.value)"></input>
+<br>
+<h2 id="cardType"></h2>
+
+<br>
+Shows the card type if one is available. If the card number is valid (not necessarily real) then the card field will be green. Runs a Luhn CheckSum Algorithm, and attempts to find card type. Doesn't look at card length or check with card provider for validity.
+
+</body>
+</html>
